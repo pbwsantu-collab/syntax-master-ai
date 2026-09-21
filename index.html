@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#1a365d" />
+  <meta name="description" content="Syntax Master AI — Bilingual English Grammar Learning PWA for WB Board Classes IX–XII" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Syntax Master AI</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="assets/icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Splash / Loading -->
+  <div id="splash" class="splash">
+    <div class="splash-content">
+      <div class="splash-logo">📘</div>
+      <h1>SYNTAX MASTER AI</h1>
+      <p>Learn Grammar • Understand Rules • Practise • Master English</p>
+      <div class="loader"></div>
+    </div>
+  </div>
+
+  <!-- App Shell -->
+  <div id="app" class="app hidden">
+    <!-- Header -->
+    <header class="header">
+      <button id="menuBtn" class="icon-btn" aria-label="Menu">☰</button>
+      <div class="header-title">
+        <h1>Syntax Master AI</h1>
+        <span class="subtitle">Grammar Mastery</span>
+      </div>
+      <div class="header-actions">
+        <button id="langBtn" class="icon-btn" title="Language">EN</button>
+        <button id="themeBtn" class="icon-btn" title="Theme">🌙</button>
+        <button id="profileBtn" class="icon-btn" title="Profile">👤</button>
+      </div>
+    </header>
+
+    <!-- Side Navigation -->
+    <nav id="sideNav" class="side-nav">
+      <div class="nav-header">
+        <span class="nav-logo">📘</span>
+        <span>Menu</span>
+        <button id="closeNav" class="icon-btn">✕</button>
+      </div>
+      <ul class="nav-list">
+        <li data-page="home" class="active"><span>🏠</span> Home</li>
+        <li data-page="learn"><span>📘</span> Learn Syntax</li>
+        <li data-page="practice"><span>🎯</span> Practice Zone</li>
+        <li data-page="quiz"><span>⚡</span> Quick Quiz</li>
+        <li data-page="exam"><span>📝</span> Exam Mode</li>
+        <li data-page="mistakes"><span>🧠</span> Mistake Book</li>
+        <li data-page="revision"><span>📚</span> Revision</li>
+        <li data-page="progress"><span>📊</span> My Progress</li>
+        <li data-page="voice"><span>🔊</span> Voice Learning</li>
+        <li data-page="teacher"><span>👨‍🏫</span> Teacher Zone</li>
+        <li data-page="exercises"><span>📖</span> Textbook Exercises</li>
+        <li data-page="map"><span>🗺️</span> Grammar Rule Map</li>
+        <li data-page="about"><span>ℹ️</span> About</li>
+      </ul>
+    </nav>
+    <div id="navOverlay" class="nav-overlay"></div>
+
+    <!-- Main Content -->
+    <main id="main" class="main">
+      <!-- HOME -->
+      <section id="page-home" class="page active">
+        <div class="welcome-banner">
+          <h2 id="welcomeText">Welcome, Student!</h2>
+          <p id="welcomeSub">Master English Syntax with bilingual explanations</p>
+          <div class="streak-badge" id="streakBadge">🔥 Streak: 0 days</div>
+        </div>
+        <div class="stats-row">
+          <div class="stat-card">
+            <span class="stat-num" id="statTopics">0</span>
+            <span class="stat-label">Topics Done</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num" id="statQuestions">0</span>
+            <span class="stat-label">Practised</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num" id="statAccuracy">0%</span>
+            <span class="stat-label">Accuracy</span>
+          </div>
+        </div>
+        <h3 class="section-title">Dashboard</h3>
+        <div class="card-grid">
+          <div class="dash-card" data-page="learn">
+            <span class="card-icon">📘</span>
+            <h4>Learn Syntax</h4>
+            <p>Topic-wise bilingual lessons</p>
+          </div>
+          <div class="dash-card" data-page="practice">
+            <span class="card-icon">🎯</span>
+            <h4>Practice Zone</h4>
+            <p>Unlimited interactive questions</p>
+          </div>
+          <div class="dash-card" data-page="quiz">
+            <span class="card-icon">⚡</span>
+            <h4>Quick Quiz</h4>
+            <p>Timed short practice</p>
+          </div>
+          <div class="dash-card" data-page="exam">
+            <span class="card-icon">📝</span>
+            <h4>Exam Mode</h4>
+            <p>Mock tests & board prep</p>
+          </div>
+          <div class="dash-card" data-page="mistakes">
+            <span class="card-icon">🧠</span>
+            <h4>Mistake Book</h4>
+            <p>Review wrong answers</p>
+          </div>
+          <div class="dash-card" data-page="revision">
+            <span class="card-icon">📚</span>
+            <h4>Revision</h4>
+            <p>Smart adaptive review</p>
+          </div>
+          <div class="dash-card" data-page="progress">
+            <span class="card-icon">📊</span>
+            <h4>My Progress</h4>
+            <p>Track performance</p>
+          </div>
+          <div class="dash-card" data-page="voice">
+            <span class="card-icon">🔊</span>
+            <h4>Voice Learning</h4>
+            <p>Listen & learn</p>
+          </div>
+          <div class="dash-card" data-page="exercises">
+            <span class="card-icon">📖</span>
+            <h4>Textbook Exercises</h4>
+            <p>Exercises 65–70</p>
+          </div>
+          <div class="dash-card" data-page="map">
+            <span class="card-icon">🗺️</span>
+            <h4>Rule Map</h4>
+            <p>See topic connections</p>
+          </div>
+          <div class="dash-card" data-page="teacher">
+            <span class="card-icon">👨‍🏫</span>
+            <h4>Teacher Zone</h4>
+            <p>Create & export questions</p>
+          </div>
+          <div class="dash-card" data-page="about">
+            <span class="card-icon">ℹ️</span>
+            <h4>About</h4>
+            <p>App info & tips</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- LEARN -->
+      <section id="page-learn" class="page">
+        <div class="page-header">
+          <button class="back-btn" data-page="home">← Back</button>
+          <h2>Learn Syntax</h2>
+        </div>
+        <div class="lang-toggle-bar">
+          <button class="lang-opt active" data-lang="en">ENGLISH</button>
+          <button class="lang-opt" data-lang="bn">বাংলা</button>
+          <button class="lang-opt" data-lang="both">BOTH</button>
+        </div>
+        <div id="lessonList" class="lesson-list"></div>
+        <div id="lessonDetail" class="lesson-detail hidden"></div>
+      </section>
+
+      <!-- PRACTICE -->
+      <section id="page-practice" class="page">
+        <div class="page-header">
+          <button class="back-btn" data-page="home">← Back</button>
+          <h2>Practice Zone</h2>
+        </div>
+        <div class="filter-bar">
+          <select id="practiceTopic">
+            <option value="all">All Topics</option>
+          </select>
+          <select id="practiceDiff">
+            <option value="all">All Levels</option>
+            <option value="beginner">🟢 Beginner</option>
+            <option value="intermediate">🔵 Intermediate</option>
+            <option value="advanced">🟠 Advanced</option>
+            <option value="board">🔴 Board</option>
+          </select>
+          <select id="practiceType">
+            <option value="all">All Types</option>
+            <option value="mcq">MCQ</option>
+            <option value="fill">Fill Blanks</option>
+            <option value="correct">Correct Sentence</option>
+            <option value="tf">True/False</option>
+            <option value="error">Error Detection</option>
+          </select>
+        </div>
+        <div id="practiceArea" class="practice-area"></div>
+      </section>
+
+      <!-- QUIZ -->
+      <section id="page-quiz" class="page">
+        <div class="page-header">
+          <button class="back-btn" data-page="home">← Back</button>
+          <h2>Quick Quiz</h2>
+        </div>
+        <div id="quizSetup" class="quiz-setup">
+          <label>Number of questions</label>
+          <select id="quizCount">
+            <option value="5">5</option>
+            <option value="10" selected>10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+          </select>
+          <label>Time limit (minutes)</label>
+          <select id="quizTime">
+            <option value="0">No limit</option>
+            <option value="5">5 min</option>
+            <option value="10" selected>10 min</option>
+            <option value="15">15 min</option>
+          </select>
+          <button id="startQuiz" class="primary-btn">Start Quiz</button>
+        </div>
+        <div id="quizArea" class="quiz-area hidden"></div>
+        <div id="quizResult" class="quiz-result hidden"></div>
+      </section>
+
+      <!-- EXAM -->
+      <section id="page-exam" class="page">
+        <div class="page-header">
+          <button class="back-btn" data-page="home">← Back</button>
+          <h2>Exam Mode</h2>
+        </div>
+        <div id="examSetup" class="exam-setup">
+          <div class="preset-grid">
+            <button class="preset-btn" data-q="10" data-t="10">Quick Practice<br><small>10 Q • 10 min</small></button>
+            <button class="preset-btn" data-q="25" data-t="25">Standard Test<br><small>25 Q • 25 min</small></button>
+            <button class="preset-btn" data-q="50" data-t="50">Full Syntax Test<br><small>50 Q • 50 min</small></button>
+            <button class="preset-btn" data-q="30" data-t="30">Board Practice<br><small>30 Q • 30 min</small></button>
+          </div>
+          <div class="custom-exam">
+            <label>Custom: Questions</label>
+            <input type="number" id="examQ" min="5" max="100" value="20" />
+            <label>Time (min)</label>
+            <input type="number" id="examT" min="0" max="120" value="20" />
+            <label><input type="checkbox" id="examNeg" /> Negative marking (−0.25)</label>
+            <button id="startExam" class="primary-btn">Start Custom Exam</button>
+          </div>
+        </div>
+        <div id="examArea" class="exam-area hidden"></div>
+        <div id="examResult" class="exam-result hidden"></div>
+      </section>
+
+      <!-- MISTAKES -->
+      <section id="page-mistakes" class="page">
+        <div class="page-header">
+          <button class="back-btn" data-page="home">← Back</button>
+          <h2>Mistake Book</h2>
+        </div>
+        <div id="mistakesList" class="mistakes-list"></div>
+      </section>
+
+      <!-- REVISION -->
+      <section id="page-revision" class="page">
+        <div class="page-header">
+          <button class="back-btn" data-page="home">← Back</button>
+          <h2>Smart Revision</h2>
+        </div>
+        <div id="revisionArea" class="revision-area"></div>
+      </section>
+
+      <!-- PROGRESS -->
+      <section id="page-progress" class="page">
+        <div class="page-header">
+          <button class="back-btn" data-page="home">← Back</button>
+          <h2>My Progress</h2>
+        </div>
+        <div id="progressDashboard" class="progress-dashboard"></div>
+      </section>
+
+      <!-- VOICE -->
+      <section id="page-voice" class="page">
+        <div class="page-header">
+          <button class="back-btn" data-page="home">← Back</button>
+          <h2>Voice Learning</h2>
+        </div>
+        <div class="voice-controls">
+          <button id="voicePlay" class="primary-btn">▶ Play Selected Rule</button>
+          <button id="voiceStop" class="secondary-btn">⏹ Stop</button>
+          <label>Speed <input type="range" id="voiceSpeed" min="0.5" max="1.5" step="0.1" value="1" /></label>
+        </div>
+        <div id="voiceContent" class="voice-content"></div>
+      </section>
+
+      <!-- TEACHER -->
+      <section id="page-teacher" class="page">
+        <div class="page-header">
+          <button class="back-btn" data-page="home">← Back</button>
+          <h2>Teacher Zone</h2>
+        </div>
+        <div class="teacher-form">
+          <h3>Create Question</h3>
+          <label>Question Text</label>
+          <textarea id="tqText" rows="3"></textarea>
+          <label>Type</label>
+          <select id="tqType">
+            <option value="mcq">MCQ</option>
+            <option value="fill">Fill Blank</option>
+            <option value="correct">Correct Sentence</option>
+          </select>
+          <div id="tqOptions">
+            <label>Option A <input id="tqA" /></label>
+            <label>Option B <input id="tqB" /></label>
+            <label>Option C <input id="tqC" /></label>
+            <label>Option D <input id="tqD" /></label>
+          </div>
+          <label>Correct Answer</label>
+          <input id="tqAns" />
+          <label>Explanation (EN)</label>
+          <textarea id="tqExpEn" rows="2"></textarea>
+          <label>Explanation (BN)</label>
+          <textarea id="tqExpBn" rows="2"></textarea>
+          <label>Article / Topic</label>
+          <input id="tqArticle" placeholder="e.g. 453" />
+          <label>Difficulty</label>
+          <select id="tqDiff">
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+            <option value="board">Board</option>
+          </select>
+          <button id="saveTeacherQ" class="primary-btn">Save Question</button>
+          <button id="exportTeacherQ" class="secondary-btn">Export JSON</button>
+          <button id="importTeacherQ" class="secondary-btn">Import JSON</button>
+          <input type="file" id="importFile" accept=".json" class="hidden" />
+        </div>
+        <div id="teacherList" class="teacher-list"></div>
+      </section>
+
+      <!-- EXERCISES -->
+      <section id="page-exercises" class="page">
+        <div class="page-header">
+          <button class="back-btn" data-page="home">← Back</button>
+          <h2>Textbook Exercises 65–70</h2>
+        </div>
+        <div id="exerciseList" class="exercise-list"></div>
+        <div id="exerciseDetail" class="exercise-detail hidden"></div>
+      </section>
+
+      <!-- MAP -->
+      <section id="page-map" class="page">
+        <div class="page-header">
+          <button class="back-btn" data-page="home">← Back</button>
+          <h2>Grammar Rule Map</h2>
+        </div>
+        <div class="rule-map">
+          <div class="map-node root">Syntax</div>
+          <div class="map-branch">
+            <div class="map-node" data-lesson="1">Subject–Verb Agreement<br><small>451–452</small></div>
+            <div class="map-node" data-lesson="2">One of / Each / Every<br><small>453, 481</small></div>
+            <div class="map-node" data-lesson="3">Singular Subjects<br><small>454</small></div>
+            <div class="map-node" data-lesson="4">Collective Numbers<br><small>455–458</small></div>
+            <div class="map-node" data-lesson="5">Subject & Complement<br><small>459</small></div>
+            <div class="map-node" data-lesson="6">AND Joined Subjects<br><small>460–461</small></div>
+            <div class="map-node" data-lesson="7">OR / Either–Or<br><small>462–465</small></div>
+            <div class="map-node" data-lesson="8">Person & Pronoun<br><small>466–471</small></div>
+            <div class="map-node" data-lesson="9">Pronouns & Adjectives<br><small>472–477</small></div>
+            <div class="map-node" data-lesson="10">Comparison & Articles<br><small>478–483</small></div>
+            <div class="map-node" data-lesson="11">Auxiliaries & Prepositions<br><small>484–487</small></div>
+            <div class="map-node" data-lesson="12">Correlatives<br><small>488–489</small></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="page-about" class="page">
+        <div class="page-header">
+          <button class="back-btn" data-page="home">← Back</button>
+          <h2>About Syntax Master AI</h2>
+        </div>
+        <div class="about-content">
+          <p><strong>Syntax Master AI</strong> is a bilingual (English + Bengali) Progressive Web App designed for West Bengal Board students (Classes IX–XII) to master English Syntax based on Articles 451–489 and Exercises 65–70.</p>
+          <h3>Features</h3>
+          <ul>
+            <li>Complete bilingual lessons covering all rules</li>
+            <li>Interactive question bank with click-to-reveal answers</li>
+            <li>Explain My Mistake system</li>
+            <li>Textbook Exercises 65–70 kept separate</li>
+            <li>Exam mode, Quick Quiz, Mistake Book, Smart Revision</li>
+            <li>Progress tracking (offline)</li>
+            <li>Voice learning (Web Speech API)</li>
+            <li>Teacher Zone for creating questions</li>
+            <li>Installable PWA — works offline</li>
+          </ul>
+          <h3>How to use</h3>
+          <ol>
+            <li>Start with <strong>Learn Syntax</strong> — read rules in EN / BN / BOTH</li>
+            <li>Practise in <strong>Practice Zone</strong> or do textbook exercises</li>
+            <li>Use <strong>Exam Mode</strong> for timed tests</li>
+            <li>Review mistakes and revise weak topics</li>
+            <li>Install the app for offline use</li>
+          </ol>
+          <p class="version">Version 1.0 • Offline-first PWA</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom Nav (Mobile) -->
+    <nav class="bottom-nav">
+      <button data-page="home" class="active"><span>🏠</span><small>Home</small></button>
+      <button data-page="learn"><span>📘</span><small>Learn</small></button>
+      <button data-page="practice"><span>🎯</span><small>Practice</small></button>
+      <button data-page="progress"><span>📊</span><small>Progress</small></button>
+      <button data-page="exam"><span>📝</span><small>Exam</small></button>
+    </nav>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
