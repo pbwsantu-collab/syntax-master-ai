@@ -1,10 +1,18 @@
-/* Syntax Master AI — loads main application */
+/* Syntax Master AI — entry: load data then app */
 (function () {
-  var s = document.createElement('script');
-  s.src = 'script-data.js';
-  s.async = false;
-  s.onerror = function () {
-    document.body.innerHTML = '<div style="padding:2rem;font-family:sans-serif"><h2>Script failed to load</h2><p>Please hard-refresh (Ctrl+Shift+R) or check script-data.js.</p></div>';
-  };
-  document.head.appendChild(s);
+  function load(src) {
+    return new Promise(function (resolve, reject) {
+      var s = document.createElement('script');
+      s.src = src;
+      s.onload = resolve;
+      s.onerror = reject;
+      document.head.appendChild(s);
+    });
+  }
+  load('sma-data.js')
+    .then(function () { return load('sma-app.js'); })
+    .catch(function (e) {
+      console.error(e);
+      document.body.innerHTML = '<div style="padding:2rem;font-family:system-ui"><h2>Failed to load app scripts</h2><p>Hard-refresh (Ctrl+Shift+R). Files needed: sma-data.js, sma-app.js</p></div>';
+    });
 })();
